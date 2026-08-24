@@ -16,3 +16,6 @@ The program bare_land_threshold.py takes in a near-infrared image nir.png, and d
 ![image](example_images/nir.png)
 
 ![image](example_images/bare_land.png)
+
+Inputs and outputs can be changed when calling the program in the command line. The first argument is the filepath of the input image, and the second is the filepath of the output.
+rgb_to_coverage_map.py can also take a third input specifying the radius.

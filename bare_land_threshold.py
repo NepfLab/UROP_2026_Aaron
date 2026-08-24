@@ -1,7 +1,12 @@
 import cv2
 import numpy as np
 
-IMAGE_FILEPATH = "nir.png"
+command_args = [None, None]
+for index, command_arg in enumerate(sys.argv[1:]):
+    command_args[index] = command_arg
+
+IMAGE_FILEPATH = "nir.png" or command_args[0]
+OUTPUT_FILEPATH = "bare_land.png" or command_args[1]
 
 image = cv2.imread(IMAGE_FILEPATH)
 grayscale = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -20,4 +25,4 @@ red = np.zeros_like(image, dtype = np.uint8)
 red[:] = (0, 0, 255)
 highlight = cv2.bitwise_and(red, red, mask = opened)
 result = 0.5 * highlight + 0.5 * image
-cv2.imwrite("bare_land.png", result)
+cv2.imwrite(OUTPUT_FILEPATH, result)
