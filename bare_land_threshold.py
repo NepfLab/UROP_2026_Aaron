@@ -1,12 +1,13 @@
 import cv2
 import numpy as np
+import sys
 
 command_args = [None, None]
 for index, command_arg in enumerate(sys.argv[1:]):
     command_args[index] = command_arg
 
-IMAGE_FILEPATH = "nir.png" or command_args[0]
-OUTPUT_FILEPATH = "bare_land.png" or command_args[1]
+IMAGE_FILEPATH = command_args[0] or "nir.png"
+OUTPUT_FILEPATH = command_args[1] or "bare_land.png"
 
 image = cv2.imread(IMAGE_FILEPATH)
 grayscale = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
